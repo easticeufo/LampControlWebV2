@@ -1,0 +1,12 @@
+.scene{
+    text-align: center;
+    margin: 5px;
+}
+
+.scene img{
+    width: 100%;
+}
+
+.scene span{
+    font-weight: bold;
+}

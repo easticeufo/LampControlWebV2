@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" ng-click="isCollapsed = !isCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand">智能灯控系统</div>
+        </div>
+
+        <div class="collapse navbar-collapse" uib-collapse="isCollapsed">
+        <ul class="nav navbar-nav">
+            <li ng-class="{active: state.includes('main.lamp')}"><a ui-sref="main.lamp">灯管理</a></li>
+            <li ng-class="{active: state.includes('main.scene')}"><a ui-sref="main.scene">场景管理</a></li>
+            <li ng-class="{active: state.includes('main.key')}" ng-show="hasKey"><a ui-sref="main.key">按键管理</a></li>
+            <li ng-class="{active: state.includes('main.config')}"><a ui-sref="main.config.system">系统配置</a></li>
+        </ul>
+            <p class="navbar-text navbar-right">
+                <a ui-sref="login" class="navbar-link" ng-click="doLogout()">登出</a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div ui-view></div>

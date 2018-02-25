@@ -1,0 +1,67 @@
+.green{
+    color: green;
+}
+
+.yellow{
+    color: yellow;
+}
+
+.white{
+    color: white;
+}
+
+.blue{
+    color: dodgerblue;
+}
+
+.login-container
+{
+    text-align: center;
+}
+
+.login-box{
+    border-style: solid;
+    border-width: 5px;
+    border-color: gray;
+    background-color: lightyellow;
+    padding: 25px 25px 20px 25px;
+    text-align: left;
+    height: 260px;
+    margin-top: 20px;
+}
+
+.login-box h4{
+    border-bottom: solid;
+    border-bottom-color: deepskyblue;
+    border-bottom-width: 1px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+.login-box div{
+    text-align: left;
+    margin-top: 15px;
+}
+
+#rememberMe {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font-size: small;
+    color: gray;
+}
+
+#loginButton {
+    margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+    .login-box button{
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .login-box button{
+        width: 40%;
+    }
+}

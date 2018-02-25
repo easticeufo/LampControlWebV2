@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <div class="row">
+        <button ng-click="addScene()">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-sm-3 col-xs-6" ng-repeat="sceneParam in sceneList">
+            <lc-scene param="sceneParam" go-to-config="configScene($index)" delete-scene="deleteScene($index)"></lc-scene>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1">
+            <ul class="nav nav-pills nav-stacked">
+                <li ui-sref-active="active"><a ui-sref="main.config.system">系统信息</a></li>
+                <li ui-sref-active="active"><a ui-sref="main.config.time">时间设置</a></li>
+                <li class="hidden-xs" ui-sref-active="active"><a ui-sref="main.config.user">用户管理</a></li>
+                <li class="hidden-xs" ui-sref-active="active"><a ui-sref="main.config.upgrade">升级</a></li>
+            </ul>
+        </div>
+        <div class="col-md-11">
+            <div ui-view></div>
+        </div>
+    </div>
+</div>

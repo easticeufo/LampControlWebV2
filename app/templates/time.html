@@ -1,0 +1,5 @@
+<span>设备当前时间:{{deviceTimeNow | date: "yyyy-MM-dd HH:mm:ss"}}</span><br>
+<span>设置的时间:</span>
+<input type="text" ng-model="setTimeString">
+<button type="button" class="btn btn-primary btn-sm" ng-click="setSystemTime()">设置</button>
+<datetimepicker data-ng-model="setTime"></datetimepicker>

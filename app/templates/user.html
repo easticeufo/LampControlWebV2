@@ -1,0 +1,8 @@
+<div class="panel panel-info">
+    <div class="panel-heading">用户列表</div>
+    <ul class="list-group">
+        <a ui-sref="main.config.userConfig({index: $index})" ng-repeat="user in userList" class="list-group-item">
+            {{user.username}}
+        </a>
+    </ul>
+</div>

@@ -1,0 +1,19 @@
+<div>
+    <table ng-table="tableParams" class="table table-condensed table-bordered table-striped">
+        <colgroup>
+            <col width="25%">
+            <col width="50%">
+            <col width="25%">
+        </colgroup>
+        <tr ng-repeat="key in $data">
+            <td title="'按键ID'">{{key.id | keyId}}</td>
+            <td title="'按键名称'">{{key.name}}</td>
+            <td title="'操作'">
+                <button type="button" class="btn btn-info btn-xs" ng-click="editKey(key.id)">
+                    <span class="glyphicon glyphicon-pencil"></span> 配置
+                </button>
+            </button>
+            </td>
+        </tr>
+    </table>
+</div>

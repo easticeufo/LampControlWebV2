@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="row">
+        <button class="btn btn-primary btn-xs" ng-show="changeNameState!=1" ng-click="changeNameState=1">修改名称</button>
+        <button class="btn btn-primary btn-xs" ng-show="changeNameState==1" ng-click="changeNameState=2">取消</button>
+        <button class="btn btn-primary btn-xs" ng-show="changeNameState==1" ng-click="changeNameState=3">保存</button>
+        <button ng-click="refresh()"><i class="icon-repeat"></i>刷新</button>
+        <button class="btn btn-primary btn-xs" ng-click="openAll()">全开</button>
+        <button class="btn btn-primary btn-xs" ng-click="closeAll()">全关</button>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-sm-3 col-xs-6" ng-repeat="lampParam in lampList">
+            <lc-lamp param="lampParam" change-name="changeNameState"></lc-lamp>
+        </div>
+    </div>
+</div>

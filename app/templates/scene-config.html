@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <div class="row">
+        <a ui-sref="main.scene" class="btn btn-primary btn-xs">取消</a>
+        <a ui-sref="main.scene" class="btn btn-primary btn-xs" ng-click="saveScene()">完成</a>
+    </div>
+    <div class="row">
+        <span>场景名称：</span><input type="text" ng-model="scene.name">
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <span>定时触发:</span>
+            <input type="checkbox" ng-model="timeFlag">
+        </div>
+        <div class="col-xs-3">
+            <span>星期:</span>
+            <ui-select multiple ng-model="select.triggerWday" close-on-select="false" ng-disabled="!timeFlag">
+                <ui-select-match placeholder="选择星期">
+                    <span>{{weekNameList[$item]}}</span>
+                </ui-select-match>
+                <ui-select-choices repeat="item in weekList">
+                    <span>{{weekNameList[item]}}</span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-xs-3">
+            <span>日期:</span>
+            <input type="text" uib-datepicker-popup ng-model="triggerDate" is-open="beginOpened"
+                   ng-click="beginOpened=true" ng-disabled="!timeFlag" style="width:100%">
+        </div>
+        <div class="col-xs-3">
+            <span>时间:</span>
+            <input type="text" ng-model="triggerTime" ng-disabled="!timeFlag" style="width:100%">
+        </div>
+    </div>
+    <div class="row">
+        <div  class="col-xs-1">
+            <input type="checkbox" ng-model="selectAll">
+        </div>
+        <div  class="col-xs-3">
+            <span>全选</span>
+        </div>
+        <div class="col-xs-6">
+            <ui-select multiple ng-model="select.moduleIdList" close-on-select="false">
+                <ui-select-match placeholder="按模块编号过滤">
+                    <span>{{$item}}</span>
+                </ui-select-match>
+                <ui-select-choices repeat="item in lampModuleList | filter: $select.search">
+                    <span>{{item}}</span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+    <div class="row" ng-repeat="lamp in selectLampList">
+        <div  class="col-xs-1">
+            <input type="checkbox" ng-model="lamp.checked">
+        </div>
+        <div class="col-xs-6 no-padding-margin">
+            <span class="no-padding-margin">{{lamp.name}}</span><span>{{lamp.id | lampId}}</span>
+        </div>
+        <div  class="col-xs-4 no-padding-margin">
+            <switch on="On" off="Off" ng-model="lamp.on" class="green"></switch>
+        </div>
+    </div>
+</div>

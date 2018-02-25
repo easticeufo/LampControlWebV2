@@ -1,0 +1,31 @@
+.lamp-container
+{
+    text-align: center;
+}
+
+.lamp{
+    border: 2px solid blue;
+    border-radius: 1em;
+    width: auto;
+    height: auto;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+    background-color: red;
+}
+
+.lamp-on{
+    background-color: green;
+}
+
+.lamp-container input{
+    width: 100%;
+}
+
+.unselect{
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+}

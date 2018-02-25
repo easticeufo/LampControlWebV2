@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>协议测试</title>
+    <style>
+        #httpTest, #websocketTest {
+            float: left;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div id="httpTest">
+        <h1>http协议</h1>
+        <label>url:</label>
+        <input id="url" type="text" value="/api/">
+        <select id="method">
+            <option value="GET">GET</option>
+            <option value="PUT">PUT</option>
+            <option value="POST">POST</option>
+            <option value="DELETE">DELETE</option>
+        </select>
+        <input type="button" value="发送" onclick="http_send()"/><br>
+        <label>发送的http body数据：</label><br>
+        <textarea id="send_data" cols="80" rows="15"></textarea><br>
+        <label>接收的http body数据：</label><br>
+        <textarea id="recv_data" cols="80" rows="15"></textarea><br>
+    </div>
+    <div id="websocketTest">
+        <h1>websocket协议</h1>
+        <label>url:</label>
+        <input id="websocketUrl" type="text" size="60" value="ws://localhost/websocket/statechange">
+        <input id="websocketConnectButton" type="button" value="连接" onclick="websocketConnect()"><br>
+        <label>发送的数据：</label>
+        <input type="button" value="发送" onclick="websocketSend()"><br>
+        <textarea id="websocketSendData" cols="80" rows="10"></textarea><br>
+        <label>接收的数据：</label><br>
+        <textarea id="websocketRecvData" cols="80" rows="20"></textarea><br>
+    </div>
+</div>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    var ws = null;
+    var websocketConnected = false;
+
+    $(function () {
+        $("#websocketUrl").val("ws://" + document.location.host + "/websocket/statechange");
+    });
+
+    function websocketConnect() {
+        if (websocketConnected) {
+            ws.close();
+            return;
+        }
+
+        ws = new WebSocket($("#websocketUrl").val());
+
+        ws.onopen = function () {
+            websocketConnected = true;
+            $("#websocketConnectButton").val("断开");
+            alert("websocket连接成功");
+        };
+
+        ws.onmessage = function (event) {
+            var now = new Date();
+            var timeString = "[" + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + "]";
+            var str = $("#websocketRecvData").val() + timeString + event.data + "\n";
+            $("#websocketRecvData").val(str);
+        };
+
+        ws.onclose = function (event) {
+            websocketConnected = false;
+            $("#websocketConnectButton").val("连接");
+            alert("websocket连接断开：" + event.reason);
+        };
+
+        ws.onerror = function () {
+            alert("websocket错误");
+        };
+    }
+
+    function websocketSend() {
+        ws.send($("#websocketSendData").val());
+    }
+
+    function http_send() {
+        $.ajax({
+            type: $("#method").val(),
+            url: $("#url").val(),
+            dataType: "text",
+            contentType: "text/plain; charset=utf-8",
+            xhrFields: {
+                withCredentials: true
+            },
+            data: $("#send_data").val(),
+            success: function (data) {
+                $("#recv_data").val(data);
+            },
+            error: function (jqXHR) {
+                alert("发生错误：" + jqXHR.status);
+            }
+        })
+    }
+</script>
+</body>
+</html>

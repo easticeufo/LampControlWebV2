@@ -1,0 +1,26 @@
+<div>
+    <form>
+        <span>按键ID：{{key.id | keyId}}</span><br>
+        <span>按键名称：</span>
+        <input type="text" ng-model="key.name"><br>
+        <span>绑定：</span>
+        <select ng-model="key.bind.type">
+            <option value="">无</option>
+            <option value="light">灯</option>
+            <option value="scene">场景</option>
+        </select><br>
+        <div ng-show="key.bind.type == 'scene'">
+            <span>选择场景：</span>
+            <select ng-options="scene.id as ('编号：'+scene.id+',名称：'+scene.name) for scene in sceneList" ng-model="key.bind.id"></select>
+        </div>
+        <div ng-show="key.bind.type == 'light'">
+            <span>选择灯：</span>
+            <select ng-options="lamp.id as (lamp.name+(lamp.id | lampId)) for lamp in lampList" ng-model="key.bind.id"></select>
+        </div>
+        <a class="btn btn-info" ui-sref="main.key">
+            <span class="glyphicon glyphicon-remove"></span> 取消
+        </a><button type="submit" class="btn btn-info" ng-click="configKey()">
+            <span class="glyphicon glyphicon-ok"></span> 保存
+        </button>
+    </form>
+</div>
